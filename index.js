@@ -35,7 +35,7 @@ in the most maintainable way */
 	console.log('named function, functional');
 	console.log(result);
 	//
-	//functional -- with reuse -- with data decoupled from operations
+	//functional -- with reuse -- with currying
 	//
 	getNames = _.curry(function(obj){
 		return obj.name;
@@ -45,11 +45,16 @@ in the most maintainable way */
 	console.log('curried getNames function');
 	console.log(result);
 	//
-	//functional -- with reuse -- with currying -- with ramda
+	//functional -- with reuse -- with currying -- with ramda prop function
 	//
 	getNames = _.map(_.prop('name'));
 	result = getNames(json);
 	console.log('ramda helper function');
 	console.log(result);
-	//the important step is decoupling data from the operations
+	//
+	// simplest way (use the correct function)
+	//
+	result = _.pluck('name')(json);
+	console.log('ramda pluck function');
+	console.log(result);
 })(R);
